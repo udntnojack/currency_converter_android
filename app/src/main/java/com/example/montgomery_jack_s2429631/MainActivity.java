@@ -221,9 +221,13 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
     public void updateFlag(){
+
+        //update flag whenever user selects a new country
         String flag = selected.getflagCode().toLowerCase();
         int resId = getResources().getIdentifier(flag, "drawable", getPackageName());
         View current = flip.getCurrentView();
+
+        //check page
         if (current.getId() == R.id.ConvertPage) {
             if (resId != 0) {
                 flagImage.setImageResource(resId);
@@ -251,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
             isUserTyping = true;
             updateFlag();
 
+            //change currency calculation based on what the user has selected
             if(onGPB){
                 if(currencyAmount > 0 && selected != null){
                     TextView rate = findViewById(R.id.exchangeRate);
@@ -292,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
         lastpulledTime.setText("Last updated: " + formatted);
     }
     public void setAmountColour(TextView amount){
+        //change colour of text based on amount value
         if(selected.getAmount() >= 0 && selected.getAmount() < 1 ){
             amount.setTextColor(getResources().getColor(R.color. YellowGreen,null));;
         }
@@ -309,6 +315,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setListeners(){
+        //set all listeners for user ineraction
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
