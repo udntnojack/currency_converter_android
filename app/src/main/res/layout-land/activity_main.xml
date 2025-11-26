@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <!-- Toolbar stays at the top -->
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ViewFlipper
+        android:id="@+id/myVFlip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- PAGE 1: LOADING SCREEN (full screen required) -->
+        <include
+            layout="@layout/loading_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!-- PAGE 2: CONVERT PAGE -->
+        <ScrollView
+            android:id="@+id/ConvertPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/converter_page"/>
+
+        </ScrollView>
+
+        <!-- PAGE 3: SEARCH PAGE -->
+        <ScrollView
+            android:id="@+id/searchPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/search_page"/>
+
+        </ScrollView>
+        <ScrollView
+            android:id="@+id/mapPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/map_page"/>
+
+        </ScrollView>
+        <ScrollView
+            android:id="@+id/aboutPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/about_page"/>
+
+        </ScrollView>
+
+
+    </ViewFlipper>
+</LinearLayout>

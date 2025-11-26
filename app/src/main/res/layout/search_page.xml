@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+
+            android:text="Select a country" />
+        <include
+            android:layout_marginTop="20dp"
+            layout="@layout/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/RateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exchange Rate: "
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/countryCodeinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Code: "
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Publish on: "
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/pubDateinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="publish on: "
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/flagInfo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/gb"
+            android:gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:contentDescription="Flag" />
+
+
+    </LinearLayout>
