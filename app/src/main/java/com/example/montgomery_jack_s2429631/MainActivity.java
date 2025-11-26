@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        //change screen when user interacts with the menu
         if (id == R.id.Convert) {
             flip.setDisplayedChild(flip.indexOfChild(findViewById(R.id.ConvertPage)));
             updateSpinner();
@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean handleMessage(Message msg) {
                     // This runs on the main thread
                     if (msg.what == 1) {
+                        //when parser returns the first time, get parser data and load first screen
                         exchangeItems = (LinkedList<exchangeItem>)msg.obj;
                         exchangeItems.sort(Comparator.comparing(exchangeItem::getCountry));
                         Toolbar myToolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     if (msg.what == 2) {
+                        //get information for dropdown
                         matchingItems = (LinkedList<exchangeItem>)msg.obj;
                         matchingItems.sort(Comparator.comparing(exchangeItem::getCountryCode));
 
@@ -175,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                         autoComplete.post(autoComplete::showDropDown);
                     }
                     if (msg.what == 3) {
+                        //get information for name drop down
                         matchingItems = (LinkedList<exchangeItem>)msg.obj;
                         matchingItems.sort(Comparator.comparing(exchangeItem::getCountry));
 
@@ -186,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                         autoCompleteName.post(autoCompleteName::showDropDown);
                     }
                     if (msg.what == 4) {
+                        //get information from parser when running again
                         exchangeItems = (LinkedList<exchangeItem>)msg.obj;
                         exchangeItems.sort(Comparator.comparing(exchangeItem::getCountry));
                         updateSpinner();
@@ -193,14 +197,16 @@ public class MainActivity extends AppCompatActivity {
                         errorAboutPage.setText("");
                     }
                     if (msg.what == 5) {
+                        //update parser
                         runParser(false);
                         SetTime();
                     }
                     if (msg.what == 6) {
+                        //display error messages
                         errorMessage.setText("an error occured please check your connection");
                         errorAboutPage.setText("an error occured please check your connection");
                     }
-                    return true; // message handled
+                    return true;
                 }
             });
         }
@@ -238,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateConverter(){
 
         if(selected != null){
+            //set is user typing to false so menus are not triggered
             isUserTyping = false;
             autoCompleteName.setText(selected.getCountry(), false);
             autoComplete.setText(selected.getCountryCode(), false);
@@ -262,15 +269,15 @@ public class MainActivity extends AppCompatActivity {
                     setAmountColour(rate);
                     float tmp = currencyAmount/ selected.getAmount();
 
-                    String countryCode = selected.getflagCode(); // ISO 3166 country code
-                    Locale locale = new Locale("", countryCode); // Note empty language
-
-                    String currencySymbol = "?"; // default/fallback
+                    String countryCode = selected.getflagCode();
+                    Locale locale = new Locale("", countryCode);
+                    //change currency symbol
+                    String currencySymbol = "?";
                     try {
                         Currency currency = Currency.getInstance(locale);
-                        currencySymbol = currency.getSymbol(); // e.g., "$"
+                        currencySymbol = currency.getSymbol();
                     } catch (IllegalArgumentException e) {
-                        // Locale has no currency
+
                         e.printStackTrace();
                     }
 
